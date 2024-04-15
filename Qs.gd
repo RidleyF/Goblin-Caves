@@ -50,8 +50,7 @@ func _process(_delta):
 
 
 func assignText():
-	if rw != "wrong":
-		$Label.text = text.keys()[i]
+	$Label.text = text.keys()[i]
 
 
 func assignItems():
