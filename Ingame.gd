@@ -59,6 +59,7 @@ func _process(delta):
 
 func end(body: Node2D):
 	if body == $"../../Player":
+		$"../../AudioStreamPlayer".stop()
 		ingame = false
 		$"../End".show()
 		$"../End/Time".text = "Your time: " + String.num(time, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dvyy7yqwihl6n"]
+[gd_scene load_steps=47 format=3 uid="uid://dvyy7yqwihl6n"]
 
 [ext_resource type="Texture2D" uid="uid://4xbr3vx0rx8n" path="res://Assets/Lightsource.png" id="1_uw1xa"]
 [ext_resource type="Script" path="res://Player.gd" id="2_k8806"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://jehyfjvl4ekc" path="res://Assets/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="13_apsvs"]
 [ext_resource type="Script" path="res://Gollum.gd" id="13_yxwth"]
 [ext_resource type="Script" path="res://Titlescreen.gd" id="14_48khe"]
+[ext_resource type="AudioStream" uid="uid://1q0cn64i5wjc" path="res://Assets/z3r0-8bitSyndrome.wav" id="18_nij22"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fipfj"]
 
@@ -310,12 +311,6 @@ texture = ExtResource("11_bfcpt")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Credits" type="Label" parent="HUD"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Thanks to the Z3ro youtude channel for the music"
-
 [node name="Ingame" type="CanvasLayer" parent="HUD"]
 script = ExtResource("9_k14x6")
 
@@ -505,7 +500,6 @@ theme_override_font_sizes/font_size = 56
 text = "Test"
 
 [node name="Titlescreen" type="ColorRect" parent="HUD"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -591,6 +585,20 @@ text = "WASD/Arrow Keys: Move
 X/Comma: Go Invisisble
 Z/Period: Take out Sword"
 
+[node name="Credits" type="Label" parent="HUD/Titlescreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -29.0
+offset_right = 446.0
+offset_bottom = -6.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 18
+text = "Thanks to the Z3ro youtude channel for the music"
+
 [node name="Gollum" type="CharacterBody2D" parent="."]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("13_yxwth")
@@ -622,6 +630,9 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="End"]
 polygon = PackedVector2Array(3376, -1592, 3376, -1536, 3424, -1488, 3448, -1344, 3384, -1304, 3440, -1296, 3496, -1344, 3464, -1528)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_nij22")
+
 [connection signal="reached" from="Player" to="Gollum" method="startEnter"]
 [connection signal="restart" from="Player" to="escape/Goblin" method="reset"]
 [connection signal="restart" from="Player" to="escape/Goblin2" method="reset"]
@@ -637,6 +648,7 @@ polygon = PackedVector2Array(3376, -1592, 3376, -1536, 3424, -1488, 3448, -1344,
 [connection signal="item_clicked" from="HUD/ColorRect/ItemList" to="HUD/ColorRect" method="attempt"]
 [connection signal="pressed" from="HUD/End/Button" to="HUD/Ingame" method="reTry"]
 [connection signal="pressed" from="HUD/Titlescreen/controlls" to="HUD/Titlescreen" method="controls"]
+[connection signal="pressed" from="HUD/Titlescreen/Start" to="Player" method="start_music"]
 [connection signal="pressed" from="HUD/Titlescreen/Start" to="HUD/Titlescreen" method="start"]
 [connection signal="close_requested" from="HUD/Titlescreen/Window" to="HUD/Titlescreen" method="closeControls"]
 [connection signal="enterDone" from="Gollum" to="HUD/ColorRect" method="start"]

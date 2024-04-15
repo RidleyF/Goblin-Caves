@@ -152,3 +152,7 @@ func takeDamage(body: Node2D):
 		else:
 			var change: Vector2 = body.global_position - global_position
 			velocity += (-40 * change).rotated(randf_range(-PI / 9, PI / 9))
+
+
+func start_music():
+	$"../AudioStreamPlayer".play(0.0)

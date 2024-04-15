@@ -25,7 +25,8 @@ const text = {
 	"Gollum:\nNOOO! Only fishes for my precious! NOO!":[],
 	"Bilbo:\nMy turn... Hmm... What have I got in my pocket? Hmm..":[],
 	"Gollum:\nWhat does the hobbitses have in its pocketses?! My precious doesn't know!":[],
-	"Gollum:\nWell a deal shall be a deal. Follow my precious.":[]
+	"Gollum:\nWell a deal shall be a deal. Follow my precious.":[],
+	"Gollum:\nNot quiteses. Now my precious feasts!":[],
 	}
 
 const answers = ["A Mountain", "The Dark", "Time"]
@@ -64,6 +65,9 @@ func assignItems():
 					hide()
 					$"../../Player".set_deferred("inCS", false)
 					$"../../Gollum".leave()
+				elif i == 17:
+					hide()
+					gameOver()
 				else:
 					i += 1
 	else:
@@ -90,14 +94,12 @@ func attempt(index, _mousePos, _mouseType):
 		i += 1
 	else:
 		rw = "wrong"
-		$Label.text = "Gollum:\nNot quiteses. Now my precious feasts!"
+		i = 17
 		$ItemList.hide()
-		await get_tree().create_timer(3).timeout
-		hide()
-		gameOver()
 
 
 func gameOver():
+	$"../../AudioStreamPlayer".stop()
 	$"../GameOver".show()
 	await get_tree().create_timer(2).timeout
 	$"../../Player".reset()
