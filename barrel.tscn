@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://25351faam0vs"]
+
+[ext_resource type="Texture2D" uid="uid://bngxykrluv4hp" path="res://Assets/Barrel sprite.png" id="1_ngmrc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8pji"]
+radius = 16.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bwsnp"]
+light_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_d1xh5"]
+polygon = PackedVector2Array(0, -41, 3, -40, 6, -40, 9, -39, 12, -38, 14, -37, 17, -36, 20, -35, 23, -33, 26, -31, 28, -29, 30, -27, 32, -25, 34, -22, 36, -19, 38, -14, 39, -10, 40, -7, 40, -4, 41, 0, 41, 4, 40, 8, 39, 11, 38, 14, 36, 18, 33, 23, 30, 27, 27, 31, 23, 34, 19, 37, 14, 38, 10, 39, 5, 40, 0, 41, -4, 40, -8, 40, -13, 39, -17, 37, -22, 34, -26, 31, -30, 28, -33, 24, -35, 21, -37, 17, -39, 13, -40, 9, -40, 4, -41, 0, -40, -5, -39, -10, -38, -16, -35, -20, -31, -25, -28, -29, -24, -32, -19, -35, -16, -37, -11, -39, -6, -40)
+
+[node name="barrel" type="RigidBody2D"]
+collision_layer = 3
+mass = 0.01
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_c8pji")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_bwsnp")
+position = Vector2(0, -11)
+scale = Vector2(3.1875, 3.1875)
+texture = ExtResource("1_ngmrc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_d1xh5")

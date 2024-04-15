@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbkhi0xkir318"]
+
+[ext_resource type="Texture2D" uid="uid://c8j6hlbps5ops" path="res://Assets/crate sprite.png" id="1_v2nio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7r6k"]
+size = Vector2(80, 80)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rxs2j"]
+light_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s0824"]
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="crate" type="RigidBody2D"]
+collision_layer = 3
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i7r6k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_rxs2j")
+position = Vector2(0, 4)
+scale = Vector2(3.9, 3.9)
+texture = ExtResource("1_v2nio")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_s0824")

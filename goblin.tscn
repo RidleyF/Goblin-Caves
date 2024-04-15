@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://kkaw5ta7epbh"]
+
+[ext_resource type="Script" path="res://customPathfinding.gd" id="1_2s14f"]
+[ext_resource type="Texture2D" uid="uid://di7e5q6aexrwj" path="res://Assets/goblin sprite.png" id="2_pqxki"]
+[ext_resource type="Texture2D" uid="uid://4xbr3vx0rx8n" path="res://Assets/Lightsource.png" id="3_skqtn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxfb5"]
+radius = 16.0
+
+[node name="Goblin" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 3
+script = ExtResource("1_2s14f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qxfb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-06, 2.5)
+scale = Vector2(1.75, 1.875)
+texture = ExtResource("2_pqxki")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -4)
+shadow_enabled = true
+texture = ExtResource("3_skqtn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 200)
+collision_mask = 3

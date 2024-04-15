@@ -1,0 +1,644 @@
+[gd_scene load_steps=46 format=3 uid="uid://dvyy7yqwihl6n"]
+
+[ext_resource type="Texture2D" uid="uid://4xbr3vx0rx8n" path="res://Assets/Lightsource.png" id="1_uw1xa"]
+[ext_resource type="Script" path="res://Player.gd" id="2_k8806"]
+[ext_resource type="Texture2D" uid="uid://bqhe0e1ldwiyn" path="res://Assets/square blur smaller.png" id="3_kr0cw"]
+[ext_resource type="Texture2D" uid="uid://ba82y46n3g41c" path="res://Assets/Bilbo sprite.png" id="4_xnqho"]
+[ext_resource type="Texture2D" uid="uid://coft0ardhrd0w" path="res://Assets/New Piskel.png" id="5_4chfs"]
+[ext_resource type="PackedScene" uid="uid://dbkhi0xkir318" path="res://crate.tscn" id="7_k8do7"]
+[ext_resource type="PackedScene" uid="uid://25351faam0vs" path="res://barrel.tscn" id="7_m8bj3"]
+[ext_resource type="PackedScene" uid="uid://kkaw5ta7epbh" path="res://goblin.tscn" id="8_q2iop"]
+[ext_resource type="Texture2D" uid="uid://eocw3l0vrpfl" path="res://Assets/invis timer.png" id="9_1mwge"]
+[ext_resource type="Script" path="res://Ingame.gd" id="9_k14x6"]
+[ext_resource type="Script" path="res://Qs.gd" id="10_u578j"]
+[ext_resource type="Texture2D" uid="uid://cso288dbgdph0" path="res://Assets/the ring sprite.png" id="11_bfcpt"]
+[ext_resource type="Texture2D" uid="uid://co0jowoe5dgk4" path="res://Assets/Heart.png" id="12_d4eu1"]
+[ext_resource type="Texture2D" uid="uid://d217ege3x0bda" path="res://Assets/Gollum sprite.png" id="12_i63s1"]
+[ext_resource type="FontFile" uid="uid://jehyfjvl4ekc" path="res://Assets/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="13_apsvs"]
+[ext_resource type="Script" path="res://Gollum.gd" id="13_yxwth"]
+[ext_resource type="Script" path="res://Titlescreen.gd" id="14_48khe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fipfj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjkqs"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n25lx"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rfg4h"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hapk4"]
+size = Vector2(20, 28.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ps6t"]
+radius = 26.0192
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4328h"]
+polygon = PackedVector2Array(-824, 88, -808, 208, -760, 304, -672, 392, -576, 392, -480, 352, -424, 392, -384, 456, -312, 472, -208, 464, -88, 472, 0, 432, 80, 384, 200, 312, 288, 344, 384, 368, 440, 320, 504, 272, 544, 160, 544, 80, 632, 56, 752, 40, 784, -32, 824, -32, 888, -64, 976, -104, 1016, -176, 1088, -184, 1152, -240, 1224, -304, 1232, -376, 1232, -472, 1224, -552, 1208, -608, 1168, -672, 1088, -728, 1008, -768, 904, -776, 824, -832, 744, -792, 664, -728, 584, -736, 464, -728, 432, -800, 368, -864, 304, -880, 304, -920, 336, -952, 328, -1000, 280, -1016, 280, -1048, 296, -1064, 336, -1088, 400, -1088, 472, -1088, 592, -1088, 640, -1048, 712, -1056, 768, -1072, 816, -1104, 912, -1120, 984, -1152, 1056, -1128, 1144, -1160, 1208, -1208, 1312, -1248, 1472, -1248, 1704, -1264, 1880, -1192, 1976, -1048, 2112, -984, 2264, -888, 2448, -864, 2640, -1000, 2832, -1008, 3008, -1064, 3072, -1200, 3312, -1360, 3296, -1496, 3160, -1624, 2952, -1944, 2736, -1904, 2608, -2000, 2440, -1912, 2280, -1984, 2184, -1864, 2008, -1800, 1840, -1688, 1696, -1616, 1592, -1560, 1408, -1512, 1176, -1440, 1072, -1504, 936, -1424, 856, -1352, 784, -1376, 728, -1344, 568, -1288, 512, -1344, 392, -1304, 296, -1296, 296, -1392, 304, -1456, 360, -1520, 384, -1600, 368, -1688, 320, -1752, 360, -1792, 456, -1848, 536, -1896, 624, -1920, 704, -1944, 800, -1992, 896, -2040, 1032, -2104, 1080, -2272, 1192, -2280, 1256, -2232, 1376, -2168, 1520, -2160, 1568, -2192, 1616, -2248, 1640, -2344, 1648, -2448, 1664, -2544, 1672, -2656, 1672, -2752, 1728, -2872, 1840, -2904, 1832, -2976, 1768, -3024, 1632, -3056, 1416, -3072, 1192, -3072, 1048, -3096, 952, -3112, 808, -3152, 904, -3464, 1088, -3672, 1448, -3808, 1736, -3944, 1968, -4072, 2080, -4360, 2192, -4672, 2200, -4944, 2064, -5176, 1768, -5376, 1400, -5560, 1056, -5536, 520, -5456, 40, -5480, -272, -5376, -624, -5240, -1104, -4880, -1576, -4616, -1656, -4328, -1600, -4000, -1200, -3632, -1032, -3536, -840, -3488, -896, -3352, -1024, -3288, -1168, -3304, -1376, -3272, -1592, -3192, -1712, -3272, -1920, -3168, -2128, -2928, -2248, -2848, -2384, -2640, -2384, -2512, -2400, -2368, -2344, -2160, -2144, -2128, -1848, -2088, -1824, -2024, -1912, -1968, -2200, -1984, -2352, -1984, -2528, -1856, -2688, -1664, -2712, -1448, -2704, -1256, -2624, -1168, -2416, -1080, -2144, -992, -1880, -928, -1696, -848, -1768, -696, -2072, -560, -2248, -448, -2304, -256, -2216, -136, -1976, -8, -1808, 16, -1608, 16, -1528, 16, -1280, 8, -1176, -8, -912, -136, -888, -24)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o2l4y"]
+polygon = PackedVector2Array(-1880, -392, -1808, -448, -1640, -512, -1472, -592, -1240, -704, -976, -696, -912, -744, -776, -832, -632, -840, -432, -856, -280, -800, -176, -744, -136, -656, -152, -488, -256, -288, -344, -184, -408, 8, -480, 96, -560, 104, -552, 24, -528, -96, -592, -200, -688, -272, -800, -336, -1016, -304, -1240, -200, -1480, -168, -1664, -208, -1832, -272)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ndxtl"]
+polygon = PackedVector2Array(-2208, -1864, -2264, -1808, -2320, -1760, -2384, -1720, -2392, -1664, -2424, -1640, -2480, -1560, -2480, -1504, -2472, -1392, -2440, -1296, -2368, -1216, -2312, -1216, -2280, -1192, -2200, -1168, -2008, -1128, -1856, -1040, -1720, -1040, -1608, -1016, -1568, -928, -1472, -904, -1344, -816, -1176, -824, -1024, -888, -864, -896, -712, -960, -552, -936, -512, -912, -400, -912, -312, -912, -248, -1008, -208, -1112, -200, -1208, -232, -1344, -264, -1408, -240, -1464, -192, -1536, -160, -1640, -240, -1744, -256, -1816, -256, -1904, -224, -1952, -232, -2024, -296, -2056, -480, -2104, -592, -2056, -872, -2016, -984, -1920, -1232, -1920, -1368, -1848, -1496, -1872, -1560, -1912, -1632, -1904, -1736, -1880, -1832, -1856, -1960, -1848, -2096, -1840)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4562y"]
+polygon = PackedVector2Array(1016, -664, 952, -712, 864, -648, 848, -600, 776, -616, 736, -632, 696, -648, 576, -632, 472, -624, 456, -664, 384, -704, 376, -760, 336, -840, 312, -992, 240, -1008, 160, -992, 88, -928, 72, -752, 96, -624, 56, -528, 40, -432, 40, -328, 16, -256, 0, -160, 0, -80, 88, -16, 176, 8, 296, 40, 304, 112, 360, 144, 456, 152, 528, 144, 552, 72, 648, 16, 712, -40, 824, -64, 888, -112, 944, -160, 1008, -208, 1112, -288, 1176, -288, 1224, -344, 1248, -432, 1224, -480, 1200, -536, 1176, -592, 1096, -616)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_csrfh"]
+polygon = PackedVector2Array(-224, -2160, -168, -2208, -72, -2280, 8, -2288, 96, -2376, 80, -2496, 128, -2616, 80, -2704, 24, -2776, -72, -2896, -168, -2952, -304, -3016, -472, -3056, -536, -3120, -640, -3168, -720, -3176, -792, -3160, -896, -3176, -952, -3128, -1000, -3088, -1064, -3096, -1096, -3128, -1144, -3168, -1176, -3168, -1240, -3136, -1344, -3120, -1448, -3088, -1520, -3104, -1592, -3120, -1688, -3072, -1760, -3048, -1824, -2936, -1864, -2912, -1960, -2824, -2064, -2752, -2080, -2680, -2104, -2576, -2128, -2504, -2176, -2432, -2128, -2384, -2056, -2360, -2048, -2304, -1984, -2248, -1920, -2272, -1880, -2216, -1824, -2224, -1752, -2232, -1712, -2264, -1664, -2240, -1608, -2184, -1536, -2160, -1416, -2168, -1320, -2184, -1232, -2176, -1184, -2136, -1088, -2168, -968, -2176, -904, -2152, -784, -2176, -672, -2176, -584, -2192, -472, -2184, -400, -2224, -360, -2208)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_02t1g"]
+polygon = PackedVector2Array(1704, -2960, 1768, -2920, 1752, -2872, 1688, -2840, 1680, -2752, 1640, -2624, 1632, -2504, 1568, -2432, 1576, -2304, 1544, -2272, 1472, -2272, 1408, -2336, 1328, -2400, 1248, -2408, 1192, -2360, 1040, -2304, 992, -2232, 904, -2176, 864, -2096, 744, -2040, 560, -1960, 448, -1888, 320, -1816, 304, -1704, 296, -1560, 272, -1352, 240, -1248, 160, -1232, 80, -1168, 32, -1200, 32, -1280, 48, -1376, 96, -1504, 72, -1648, 16, -1736, -16, -1808, -24, -1888, -32, -2008, 48, -2040, 120, -2088, 216, -2128, 360, -2176, 432, -2256, 448, -2376, 440, -2656, 360, -2800, 384, -2856, 456, -2888, 504, -2928, 552, -3040, 672, -3072, 792, -3048, 872, -3048, 1040, -3008, 1128, -2936, 1256, -2928, 1384, -2960, 1536, -2904, 1624, -2928)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5n7kk"]
+size = Vector2(48, 146)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5g0sj"]
+radius = 8.70026
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pygt3"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgbno"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exgqi"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scndo"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxhsd"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_568k2"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe0jq"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fet1"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq2ig"]
+atlas = ExtResource("9_1mwge")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ufi7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pygt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgbno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exgqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scndo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxhsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_568k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe0jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fet1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq2ig")
+}],
+"loop": true,
+"name": &"invis",
+"speed": 5.0
+}]
+
+[sub_resource type="InputEventAction" id="InputEventAction_wp3k2"]
+action = &"ui_accept"
+
+[sub_resource type="Shortcut" id="Shortcut_lc3pm"]
+events = [SubResource("InputEventAction_wp3k2")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3pt1q"]
+radius = 13.3333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvha3"]
+size = Vector2(1712, 728)
+
+[node name="main" type="Node2D"]
+
+[node name="Background" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(9.53674e-07, -3.63798e-12)
+scale = Vector2(2032, 1456)
+mesh = SubResource("BoxMesh_fipfj")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(3.72529e-09, 3.0756e-05)
+collision_layer = 2
+script = ExtResource("2_k8806")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_hjkqs")
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+visible = false
+shadow_enabled = true
+texture = ExtResource("1_uw1xa")
+texture_scale = 1.5
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+material = SubResource("CanvasItemMaterial_n25lx")
+position = Vector2(-1.11759e-08, -3.07635e-05)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_xnqho")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="sword" type="Sprite2D" parent="Player/Area2D"]
+visible = false
+material = SubResource("CanvasItemMaterial_rfg4h")
+position = Vector2(-3.72529e-09, -3.0756e-05)
+scale = Vector2(2, 2)
+texture = ExtResource("5_4chfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, -21.5)
+shape = SubResource("RectangleShape2D_hapk4")
+disabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Player/Area2D"]
+position = Vector2(0, -2.38422e-07)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Area2D/StaticBody2D"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_hapk4")
+disabled = true
+
+[node name="Hitbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
+shape = SubResource("CircleShape2D_6ps6t")
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="walls"]
+position = Vector2(120, 16)
+occluder = SubResource("OccluderPolygon2D_4328h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-704, 104, -688, 216, -640, 320, -552, 408, -448, 408, -360, 368, -304, 408, -264, 472, -192, 488, -88, 480, 32, 488, 120, 448, 320, 328, 408, 360, 504, 384, 624, 288, 664, 176, 664, 96, 752, 72, 872, 56, 904, -16, 944, -16, 1096, -88, 1136, -160, 1208, -168, 1344, -288, 1352, -352, 1352, -464, 1352, -464, 1352, -464, 1344, -536, 1328, -592, 1288, -656, 1208, -712, 1128, -752, 1024, -760, 944, -816, 864, -776, 784, -712, 704, -720, 584, -712, 552, -784, 488, -848, 424, -864, 424, -904, 456, -936, 448, -984, 400, -1000, 400, -1032, 456, -1072, 712, -1072, 760, -1032, 832, -1040, 888, -1056, 936, -1088, 1032, -1104, 1104, -1136, 1176, -1112, 1272, -1144, 1328, -1192, 1432, -1232, 1592, -1232, 1824, -1248, 2000, -1176, 2096, -1032, 2232, -968, 2384, -872, 2568, -848, 2760, -984, 2952, -992, 3128, -1048, 3192, -1184, 3432, -1344, 3416, -1480, 3280, -1608, 3072, -1928, 2856, -1888, 2728, -1984, 2560, -1896, 2400, -1968, 2304, -1848, 2128, -1784, 1960, -1672, 1816, -1600, 1712, -1544, 1528, -1496, 1296, -1424, 1192, -1488, 1056, -1408, 976, -1336, 904, -1360, 848, -1328, 688, -1272, 632, -1328, 512, -1288, 416, -1280, 416, -1384, 424, -1440, 480, -1504, 504, -1584, 488, -1672, 440, -1736, 480, -1776, 656, -1880, 824, -1928, 1152, -2088, 1200, -2256, 1312, -2264, 1376, -2216, 1496, -2152, 1640, -2144, 1688, -2176, 1736, -2232, 1760, -2328, 1768, -2432, 1784, -2528, 1792, -2640, 1792, -2736, 1848, -2856, 1960, -2888, 1952, -2960, 1888, -3008, 1752, -3040, 1536, -3056, 1312, -3056, 1072, -3096, 928, -3136, 1024, -3448, 1208, -3656, 1568, -3792, -1280, -3802, -1080, -3616, -912, -3520, -720, -3472, -776, -3336, -904, -3272, -1048, -3288, -1256, -3256, -1472, -3176, -1592, -3256, -1800, -3152, -2008, -2912, -2128, -2832, -2264, -2624, -2264, -2488, -2280, -2352, -2224, -2144, -1728, -2072, -1704, -2008, -1792, -1952, -2232, -1968, -2408, -1840, -2568, -1648, -2592, -1432, -2584, -1240, -2504, -1152, -2296, -1064, -2024, -976, -1760, -912, -1576, -832, -1648, -680, -1952, -544, -2128, -432, -2184, -240, -2096, -120, -1856, 8, -1688, 32, -1408, 32, -1160, 24, -1056, 8, -792, -120, -768, -8)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-560, 104, -480, 96, -408, 8, -344, -184, -256, -288, -152, -488, -136, -656, -176, -744, -280, -800, -432, -856, -776, -832, -912, -744, -976, -696, -1240, -704, -1640, -512, -1808, -448, -1880, -392, -1832, -272, -1664, -208, -1480, -168, -1240, -200, -1016, -304, -800, -336, -688, -272, -592, -200, -528, -96, -552, 24)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-312, -912, -248, -1008, -208, -1112, -200, -1208, -232, -1344, -264, -1408, -240, -1464, -192, -1536, -160, -1640, -240, -1744, -256, -1816, -256, -1904, -224, -1952, -232, -2024, -296, -2056, -480, -2104, -592, -2056, -872, -2016, -984, -1920, -1232, -1920, -1368, -1848, -1496, -1872, -1560, -1912, -1632, -1904, -1736, -1880, -1832, -1856, -2096, -1840, -2208, -1864, -2320, -1760, -2384, -1720, -2392, -1664, -2424, -1640, -2480, -1560, -2480, -1504, -2472, -1392, -2440, -1296, -2368, -1216, -2312, -1216, -2280, -1192, -2200, -1168, -2008, -1128, -1856, -1040, -1720, -1040, -1608, -1016, -1568, -928, -1472, -904, -1344, -816, -1176, -824, -1024, -888, -864, -896, -712, -960, -552, -936, -512, -912)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(0, -80, 0, -168, 16, -256, 40, -328, 40, -432, 56, -528, 96, -624, 72, -752, 88, -928, 160, -992, 240, -1008, 312, -992, 336, -840, 376, -760, 384, -704, 456, -664, 472, -624, 576, -632, 696, -648, 776, -616, 848, -600, 864, -648, 952, -712, 1016, -664, 1096, -616, 1176, -592, 1248, -432, 1224, -344, 1176, -288, 1112, -288, 976, -184, 944, -160, 888, -112, 824, -64, 712, -40, 648, 16, 552, 72, 528, 144, 456, 152, 360, 144, 304, 112, 296, 40, 88, -16)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-2176, -2432, -2128, -2504, -2104, -2576, -2080, -2680, -2064, -2752, -1960, -2824, -1864, -2912, -1824, -2936, -1760, -3048, -1688, -3072, -1592, -3120, -1448, -3088, -1344, -3120, -1240, -3136, -1176, -3168, -1144, -3168, -1096, -3128, -1064, -3096, -1000, -3088, -896, -3176, -792, -3160, -720, -3176, -640, -3168, -536, -3120, -472, -3056, -304, -3016, -168, -2952, -72, -2896, 24, -2776, 80, -2704, 128, -2616, 80, -2488, 96, -2376, 8, -2288, -72, -2280, -168, -2208, -224, -2160, -360, -2208, -400, -2224, -472, -2184, -584, -2192, -672, -2176, -784, -2176, -904, -2152, -968, -2176, -1088, -2168, -1184, -2136, -1232, -2176, -1320, -2184, -1416, -2168, -1536, -2160, -1608, -2184, -1664, -2240, -1712, -2264, -1752, -2232, -1880, -2216, -1920, -2272, -1984, -2248, -2048, -2304, -2056, -2360, -2128, -2384)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="walls/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(32, -1200, 80, -1168, 160, -1232, 240, -1248, 272, -1352, 296, -1560, 304, -1696, 320, -1816, 448, -1888, 560, -1960, 744, -2040, 864, -2096, 904, -2176, 992, -2232, 1040, -2304, 1192, -2360, 1248, -2408, 1328, -2400, 1408, -2336, 1472, -2272, 1544, -2272, 1576, -2304, 1568, -2432, 1632, -2504, 1640, -2624, 1680, -2752, 1688, -2840, 1752, -2872, 1768, -2920, 1704, -2960, 1624, -2928, 1536, -2904, 1384, -2960, 1256, -2928, 1128, -2936, 1040, -3008, 872, -3048, 792, -3048, 672, -3072, 552, -3040, 504, -2928, 456, -2888, 384, -2856, 360, -2800, 440, -2656, 448, -2376, 432, -2256, 360, -2176, 216, -2128, 120, -2088, 48, -2040, -32, -2008, -24, -1888, -16, -1808, 16, -1736, 72, -1648, 96, -1504, 48, -1376, 32, -1280)
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="walls"]
+occluder = SubResource("OccluderPolygon2D_o2l4y")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="walls"]
+occluder = SubResource("OccluderPolygon2D_ndxtl")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="walls"]
+occluder = SubResource("OccluderPolygon2D_4562y")
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="walls"]
+occluder = SubResource("OccluderPolygon2D_csrfh")
+
+[node name="LightOccluder2D6" type="LightOccluder2D" parent="walls"]
+occluder = SubResource("OccluderPolygon2D_02t1g")
+
+[node name="PointLight2D" type="PointLight2D" parent="walls"]
+light_mask = 512
+position = Vector2(135, -3400)
+energy = 0.65
+shadow_enabled = true
+texture = ExtResource("3_kr0cw")
+texture_scale = 2.0
+
+[node name="escape" type="Area2D" parent="."]
+position = Vector2(1000, -400)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="escape"]
+position = Vector2(2424, -1009)
+shape = SubResource("RectangleShape2D_5n7kk")
+
+[node name="PointLight2D" type="PointLight2D" parent="escape"]
+position = Vector2(2400, -1008)
+rotation = 1.5708
+energy = 4.0
+shadow_enabled = true
+texture = ExtResource("1_uw1xa")
+
+[node name="barrel" parent="escape" instance=ExtResource("7_m8bj3")]
+position = Vector2(1128, -1108)
+
+[node name="barrel2" parent="escape" instance=ExtResource("7_m8bj3")]
+position = Vector2(1384, -752)
+
+[node name="barrel3" parent="escape" instance=ExtResource("7_m8bj3")]
+position = Vector2(1970, -1355)
+
+[node name="crate" parent="escape" instance=ExtResource("7_k8do7")]
+position = Vector2(1896, -800)
+
+[node name="crate2" parent="escape" instance=ExtResource("7_k8do7")]
+position = Vector2(1528, -1232)
+
+[node name="Goblin" parent="escape" instance=ExtResource("8_q2iop")]
+position = Vector2(1432, -1200)
+
+[node name="Goblin2" parent="escape" instance=ExtResource("8_q2iop")]
+position = Vector2(1728, -863)
+
+[node name="Ring" type="Area2D" parent="."]
+position = Vector2(430, -955)
+scale = Vector2(1.2, 1.2)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ring"]
+shape = SubResource("CircleShape2D_5g0sj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ring"]
+position = Vector2(0, 2)
+texture = ExtResource("11_bfcpt")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Credits" type="Label" parent="HUD"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Thanks to the Z3ro youtude channel for the music"
+
+[node name="Ingame" type="CanvasLayer" parent="HUD"]
+script = ExtResource("9_k14x6")
+
+[node name="Invis Holder" type="HBoxContainer" parent="HUD/Ingame"]
+offset_top = 50.0
+offset_right = 120.0
+offset_bottom = 88.0
+scale = Vector2(1.4, 1.4)
+
+[node name="Invis1" type="AnimatedSprite2D" parent="HUD/Ingame/Invis Holder"]
+position = Vector2(24, 24)
+sprite_frames = SubResource("SpriteFrames_8ufi7")
+animation = &"invis"
+
+[node name="Invis2" type="AnimatedSprite2D" parent="HUD/Ingame/Invis Holder"]
+position = Vector2(64, 24)
+sprite_frames = SubResource("SpriteFrames_8ufi7")
+animation = &"invis"
+
+[node name="Invis3" type="AnimatedSprite2D" parent="HUD/Ingame/Invis Holder"]
+position = Vector2(104, 24)
+sprite_frames = SubResource("SpriteFrames_8ufi7")
+animation = &"invis"
+
+[node name="Heart Container" type="HBoxContainer" parent="HUD/Ingame"]
+offset_top = -5.0
+offset_right = 120.0
+offset_bottom = 35.0
+scale = Vector2(1.4, 1.4)
+
+[node name="Heart1" type="Sprite2D" parent="HUD/Ingame/Heart Container"]
+position = Vector2(24, 24)
+texture = ExtResource("12_d4eu1")
+
+[node name="Heart2" type="Sprite2D" parent="HUD/Ingame/Heart Container"]
+position = Vector2(64, 24)
+texture = ExtResource("12_d4eu1")
+
+[node name="Heart3" type="Sprite2D" parent="HUD/Ingame/Heart Container"]
+position = Vector2(104, 24)
+texture = ExtResource("12_d4eu1")
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -208.0
+offset_right = 1152.0
+grow_vertical = 0
+color = Color(0.2, 0.2, 0.2, 0.890196)
+script = ExtResource("10_u578j")
+
+[node name="Label" type="Label" parent="HUD/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.077
+anchor_right = 0.014
+anchor_bottom = 0.077
+offset_left = -0.128
+offset_top = -0.0160007
+offset_right = 967.872
+offset_bottom = 62.984
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 24
+text = "
+This is a long enough test message to be able to test."
+autowrap_mode = 3
+
+[node name="Space" type="Label" parent="HUD/ColorRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -29.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 18
+text = "(Space to Continue)"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="ItemList" type="ItemList" parent="HUD/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 132.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 20
+allow_search = false
+auto_height = true
+
+[node name="GameOver" type="ColorRect" parent="HUD"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HUD/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.717647, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="End" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="Label" type="Label" parent="HUD/End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -163.0
+offset_right = 224.5
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 72
+text = "You Escaped!"
+
+[node name="Button" type="Button" parent="HUD/End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 38.0
+offset_right = 126.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 56
+text = "Main Menu"
+
+[node name="Time" type="Label" parent="HUD/End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -48.0
+offset_right = 65.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 56
+text = "Test"
+
+[node name="Titlescreen" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("14_48khe")
+
+[node name="Title" type="Label" parent="HUD/Titlescreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.5
+offset_top = -163.5
+offset_right = 309.5
+offset_bottom = -66.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 80
+text = "The Goblin Caves"
+
+[node name="controlls" type="Button" parent="HUD/Titlescreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -153.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 53.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+
+[node name="Start" type="Button" parent="HUD/Titlescreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -19.5
+offset_right = 104.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_lc3pm")
+text = "Start"
+
+[node name="Window" type="Window" parent="HUD/Titlescreen"]
+initial_position = 4
+size = Vector2i(300, 100)
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="HUD/Titlescreen/Window"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="Label" type="Label" parent="HUD/Titlescreen/Window"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_right = 133.5
+offset_bottom = 152.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("13_apsvs")
+theme_override_font_sizes/font_size = 22
+text = "WASD/Arrow Keys: Move
+X/Comma: Go Invisisble
+Z/Period: Take out Sword"
+
+[node name="Gollum" type="CharacterBody2D" parent="."]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("13_yxwth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gollum"]
+shape = SubResource("CircleShape2D_3pt1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gollum"]
+position = Vector2(0, 3.33333)
+scale = Vector2(2, 2)
+texture = ExtResource("12_i63s1")
+
+[node name="left eye" type="PointLight2D" parent="Gollum"]
+position = Vector2(-1.37091e-06, -5.96046e-08)
+energy = 0.65
+shadow_enabled = true
+texture = ExtResource("1_uw1xa")
+
+[node name="Cutscene Trigger" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cutscene Trigger"]
+position = Vector2(88, -3252)
+shape = SubResource("RectangleShape2D_cvha3")
+
+[node name="End" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="End"]
+polygon = PackedVector2Array(3376, -1592, 3376, -1536, 3424, -1488, 3448, -1344, 3384, -1304, 3440, -1296, 3496, -1344, 3464, -1528)
+
+[connection signal="reached" from="Player" to="Gollum" method="startEnter"]
+[connection signal="restart" from="Player" to="escape/Goblin" method="reset"]
+[connection signal="restart" from="Player" to="escape/Goblin2" method="reset"]
+[connection signal="restart" from="Player" to="HUD/Ingame" method="_ready"]
+[connection signal="restart" from="Player" to="HUD/ColorRect" method="_ready"]
+[connection signal="restart" from="Player" to="Gollum" method="_ready"]
+[connection signal="body_entered" from="Player/Area2D" to="escape/Goblin" method="takeDamage"]
+[connection signal="body_entered" from="Player/Area2D" to="escape/Goblin2" method="takeDamage"]
+[connection signal="body_entered" from="Player/Hitbox" to="Player" method="takeDamage"]
+[connection signal="body_entered" from="escape" to="Player" method="_on_escape_body_entered"]
+[connection signal="body_exited" from="escape" to="Player" method="_on_escape_body_exited"]
+[connection signal="body_entered" from="Ring" to="Player" method="pickUpRing"]
+[connection signal="item_clicked" from="HUD/ColorRect/ItemList" to="HUD/ColorRect" method="attempt"]
+[connection signal="pressed" from="HUD/End/Button" to="HUD/Ingame" method="reTry"]
+[connection signal="pressed" from="HUD/Titlescreen/controlls" to="HUD/Titlescreen" method="controls"]
+[connection signal="pressed" from="HUD/Titlescreen/Start" to="HUD/Titlescreen" method="start"]
+[connection signal="close_requested" from="HUD/Titlescreen/Window" to="HUD/Titlescreen" method="closeControls"]
+[connection signal="enterDone" from="Gollum" to="HUD/ColorRect" method="start"]
+[connection signal="body_entered" from="Cutscene Trigger" to="Player" method="startCS"]
+[connection signal="body_entered" from="End" to="HUD/Ingame" method="end"]
