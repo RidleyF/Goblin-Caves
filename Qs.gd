@@ -41,6 +41,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if $ItemList.visible == true:
+		checkInput()
 	assignText()
 	assignItems()
 	var view = $"../../Player".get_viewport_rect().size
@@ -85,7 +87,22 @@ func start():
 	show()
 
 
-func attempt(index, _mousePos, _mouseType):
+func checkInput():
+	if Input.is_action_just_pressed("one"):
+		attempt(0, Vector2.ZERO, 1)
+		return
+	if Input.is_action_just_pressed("two"):
+		attempt(1, Vector2.ZERO, 1)
+		return
+	if Input.is_action_just_pressed("three"):
+		attempt(2, Vector2.ZERO, 1)
+		return
+	if Input.is_action_just_pressed("four"):
+		attempt(3, Vector2.ZERO, 1)
+		return
+
+
+func attempt(index: int, _mousePos: Vector2, _mouseType):
 	var array = text.values()[i]
 	var guess = array[index]
 	if answers.has(guess):

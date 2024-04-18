@@ -44,6 +44,10 @@ func i_process():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_just_pressed("reset"):
+		title = true
+		$"../AudioStreamPlayer".stop()
+		reset()
 	if inCS:
 		cutScene()
 	elif title == true:
@@ -139,6 +143,10 @@ func reset():
 	seenCS = false
 	iFrame = 0
 	iTime = 8.0
+	$"Area2D/CollisionShape2D".set_deferred("disabled", true)
+	$"Area2D/StaticBody2D/CollisionShape2D2".set_deferred("disabled", true)
+	$PointLight2D.hide()
+	$"Area2D/sword".hide()
 	_ready()
 	restart.emit()
 
